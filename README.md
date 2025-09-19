@@ -1,19 +1,17 @@
-Foodie Rover
+Foodie Rover Recipe Finder
 
-Foodie Rover ek recipe finding website hai jahan users apni favorite dishes search kar sakte hain, filter apply kar sakte hain aur reviews bhi dekh sakte hain.
-Iska design simple aur responsive hai jo mobile aur desktop dono par easily chal jata hai.
+Foodie Rover is a recipe finding website where users can search for their favorite dishes, apply filters, and view ratings & reviews.
+The design is simple and fully responsive, working seamlessly on both mobile and desktop devices.
 
  Features
+
  Recipe Finder – Search by category, cuisine, or keywords.
 
- Ratings & Reviews – Users apne reviews aur feedback de sakte hain.
+ Ratings & Reviews – Users can share their reviews and feedback.
 
- Responsive Design – Mobile friendly navigation with collapsible menu.
+ Responsive Design – Mobile-friendly navigation with a collapsible menu.
 
  Poll Section – Weekly dish voting system.
-
- (Optional) Dark mode toggle.
-
  Technologies Used
 
 HTML5
@@ -45,6 +43,7 @@ User login & signup system.
 Recipe upload option.
 
 API integration for live recipes.
+
 
  Author
 
