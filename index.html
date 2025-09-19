@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe Finder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 px-3 py-2">
+  <div class="container d-flex justify-content-between align-items-center navv">
+    
+    <!-- Mobile Menu Button -->
+    <button class="d-lg-none btn border-0" id="menuToggle">☰</button>
+    <!-- Logo (center on mobile) -->
+    <a class="navbar-brand fw-bold mx-auto mx-lg-0 display-5 navv-food" href="index.html"> FOODIE ROVER</a>
+    
+    <!-- Nav Links (hidden on mobile, visible on desktop) -->
+    <div class="d-none d-lg-flex gap-3 align-items-center mx-auto nav-bttn" id="navLinks">
+      <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
+      <a href="reviews.html" class="nav-link fw-semibold text-dark">Ratings & Reviews</a>
+      <a href="contact.html" class="nav-link fw-semibold text-dark">Contact</a>
+    </div>
+    
+    <!-- Login Button -->
+    <button id="openLoginPopup" class="btn btn-danger">Login</button>
+  </div>
+</nav>
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="d-lg-none bg-white shadow-sm position-absolute top-0 start-0 w-100 vh-100 d-none">
+  <div class="p-4">
+    <button class="btn-close float-end mb-4" id="closeMenu"></button>
+    <a href="index.html" class="d-block mb-3 fw-semibold text-dark">Home</a>
+    <a href="reviews.html" class="d-block mb-3 fw-semibold text-dark">Ratings & Reviews</a>
+    <a href="contact.html" class="d-block mb-3 fw-semibold text-dark">Contact</a>
+  </div>
+</div>
+
+<section class="hero-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left side: Heading -->
+      <div class="col-md-6 mb-4 mb-md-0 text-white">
+        <h1 class="display-6 fw-bold">Your Personal Recipe Coach,<br>At Your Finger Tips </h1>
+        <p class="lead">Cook Smarter, Not Harder</p>
+      </div>
+
+      <!-- Right side: Search & Filters -->
+      <div class="col-md-6">
+        <div class="input-group mb-3" style="height: 48px;">
+          <input
+            type="search"
+            class="form-control border-0 shadow-none rounded-start-pill px-3"
+            placeholder="Search recipes (e.g. Chicken)"
+            id="searchInput"
+            style="height: 100%;"
+          />
+          <button
+            class="btn btn-danger rounded-end-pill px-4"
+            type="button"
+            id="searchBtn"
+            style="height: 100%;"
+          >
+            Search
+          </button>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 mb-2">
+            <select id="categoryFilter" class="form-select">
+              <option value="">Filter by Category</option>
+            </select>
+          </div>
+          <div class="col-sm-6 mb-2">
+            <select id="areaFilter" class="form-select">
+              <option value="">Filter by Cuisine</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Section -->
+
+<section class="categories-section container my-4">
+  <h2 class="text-center mb-5 display-6 fw-semibold"> Categories</h2>
+  <div class="categories-container">
+    <div class="category-card mb-2" data-category="Beef">
+      <img src="Beef.jpg" alt="Beef">
+      <p>BEEF</p>
+    </div>
+    <div class="category-card mb-2" data-category="Breakfast">
+      <img src="Breakfast.jpg" alt="Breakfast">
+      <p>BREAKFAST</p>
+    </div>
+    <div class="category-card mb-2" data-category="Chicken">
+      <img src="Chicken.jpg" alt="Chicken">
+      <p>CHICKEN</p>
+    </div>
+    <div class="category-card mb-2" data-category="Dessert">
+      <img src="Dessert.jpg" alt="Dessert">
+      <p>DESSERT</p>
+    </div>
+    <div class="category-card mb-2" data-category="Goat">
+      <img src="Goat.jpg" alt="Goat">
+      <p>GOAT</p>
+    </div>
+    <div class="category-card mb-2" data-category="Lamb">
+      <img src="Lamb.jpg" alt="Lamb">
+      <p>LAMB</p>
+    </div>
+    <div class="category-card mb-2" data-category="Pasta">
+      <img src="Pasta.jpg" alt="Pasta">
+      <p>PASTA</p>
+    </div>
+    <div class="category-card mb-2" data-category="Pork">
+      <img src="Pork.jpg" alt="Pork">
+      <p>PORK</p>
+    </div>
+    <div class="category-card mb-2" data-category="Seafood">
+      <img src="Seafood.jpg" alt="Seafood">
+      <p>SEAFOOD</p>
+    </div>
+    <div class="category-card mb-2" data-category="Side">
+      <img src="Side.jpg" alt="Side">
+      <p>SIDE</p>
+    </div>
+    <div class="category-card mb-2" data-category="Starter">
+      <img src="Starter.jpg" alt="Starter">
+      <p>STARTER</p>
+    </div>
+    <div class="category-card mb-2" data-category="Vegan">
+      <img src="Vegan.jpg" alt="Vegan">
+      <p>VEGAN</p>
+    </div>
+    <div class="category-card mb-2" data-category="Vegetarian">
+      <img src="Vegeterian.jpg" alt="Vegetarian">
+      <p>VEGETARIAN</p>
+    </div>
+    <div class="category-card mb-2 msss-j" data-category="Miscellaneous">
+      <img src="Miscellaneous.jpg" alt="Miscellaneous">
+      <p>MISCELLANEOUS</p>
+    </div>
+  </div>
+</section>
+
+<!-- Recipe Cards -->
+<div class="container">
+  <div class="row" id="recipeResults"></div>
+</div>
+
+  <!-- Cooking Made Easy -->
+  <section class="about-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <!-- Image from Unsplash -->
+          <img src="Easy cook.jpg" alt="Cooking Together" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+          <h2 class="mb-5 display-6 fw-semibold">Easy Steps, Big Flavors</h2>
+          <p class="lead ms-5">
+            We believe cooking should be fun and stress-free. That’s why we provide clear instructions, mouthwatering images, and ingredients you can easily find. With simple steps and time-saving tips, we help you bring delicious flavors to your table without the hassle. Explore, cook, and share your creations — because great food is meant to be enjoyed together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Recipes -->
+<section id="trendingSection" class="container my-5">
+  <h2 class="text-center mb-5 display-6 fw-semibold">Trending Recipes</h2>
+  <div class="row" id="trendingRecipes"></div>
+</section>
+
+<!-- About Section -->
+<section class="about-section py-5 about-s">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="Foodie rover Sk.png" alt="Cooking Together" class="ab-image img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-5 display-6 fw-semibold">Our Story</h2>
+        <p class="lead">
+          At <b><i>Foodei Rover</i></b>, our adventure started with a craving — not just for good food, but for the thrill of discovery. We believe that recipes aren’t just instructions; they’re stories waiting to be explored. So, we became rovers — wandering through flavors, cultures, and kitchens across the globe, collecting dishes that spark joy and satisfy curiosity. Whether you’re a passionate home chef, a casual snacker, or an explorer of the culinary universe, <b><i>Foodei Rover</i></b> is your passport to flavors from every corner of the world — one delicious stop at a time.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section py-5">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4 text-dark-mode">What People Are Saying</h2>
+    <div class="position-relative">
+      <div class="review-track d-flex" id="reviewSlider">
+        <!-- 10 review cards -->
+        <div class="review-card p-3">“Absolutely love this site!”<br><strong><img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" width="50" height="50">— Ayesha Khan</strong>
+        </div>
+        <div class="review-card p-3">“Recipes are easy and delicious.”<br><strong> <img src="https://randomuser.me/api/portraits/women/45.jpg" class="rounded-circle mb-3" width="50" height="50"> — Rahul Mehra</strong></div>
+        <div class="review-card p-3">“Sleek interface and cuisines!”<br><strong> <img src="https://randomuser.me/api/portraits/women/43.jpg" class="rounded-circle mb-3" width="50" height="50"> — Maria Gomez</strong></div>
+        <div class="review-card p-3">“Perfect for beginner cooks.”<br><strong> <img src="https://randomuser.me/api/portraits/women/42.jpg" class="rounded-circle mb-3" width="50" height="50"> — Kevin Park</strong></div>
+        <div class="review-card p-3">“Helpful during festivals.”<br><strong> <img src="https://randomuser.me/api/portraits/women/41.jpg" class="rounded-circle mb-3" width="50" height="50"> — Anjali Sharma</strong></div>
+        <div class="review-card p-3">“Clean UI and dark mode!”<br><strong> <img src="https://randomuser.me/api/portraits/women/46.jpg" class="rounded-circle mb-3" width="50" height="50"> — Michael Lee</strong></div>
+        <div class="review-card p-3">“Highly recommended.”<br><strong> <img src="https://randomuser.me/api/portraits/women/47.jpg" class="rounded-circle mb-3" width="50" height="50"> — Fatima Noor</strong></div>
+        <div class="review-card p-3">“I use this site daily.”<br><strong> <img src="https://randomuser.me/api/portraits/women/48.jpg" class="rounded-circle mb-3" width="50" height="50"> — Zaid Ahmed</strong></div>
+        <div class="review-card p-3">“Enjoy cooking again!”<br><strong> <img src="https://randomuser.me/api/portraits/women/49.jpg" class="rounded-circle mb-3" width="50" height="50"> — Rachel Adams</strong></div>
+        <div class="review-card p-3">“Better than other apps.”<br><strong> <img src="https://randomuser.me/api/portraits/women/40.jpg" class="rounded-circle mb-3" width="50" height="50"> — Ahmed Patel</strong></div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button id="prevReview" class="review-nav btn btn-outline-secondary">‹</button>
+      <button id="nextReview" class="review-nav btn btn-outline-secondary">›</button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Loading Spinner -->
+<div id="loadingSpinner" class="d-none">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- Recipe Modal -->
+
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recipeTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img id="recipeImg" class="img-fluid rounded mb-3" />
+        <h6 class="fw-semibold">Ingredients</h6>
+        <ul id="ingredientList" class="mb-3"></ul>
+        <!-- Just above or beside Instructions heading -->
+<div class="d-flex justify-content-between align-items-center">
+  <h5>Instructions</h5>
+  <button id="translateBtn" class="btn btn-sm btn-secondary">Translate to Urdu</button>
+</div>
+
+        <!-- Like/Dislike Buttons -->
+<div class="like-dislike d-flex align-items-center gap-3 mt-3">
+  <button id="likeBtn" class="btn btn-outline-success">
+    👍 Like <span id="likeCount">0</span>
+  </button>
+  <button id="dislikeBtn" class="btn btn-outline-danger">
+    👎 Dislike <span id="dislikeCount">0</span>
+  </button>
+</div>
+
+        <h6 class="fw-semibold">Instructions</h6>
+        <p id="instructionsText" class="lh-lg"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Popup Overlay -->
+<div class="popup-overlay" id="loginPopupOverlay">
+  <div class="popup-content">
+    <div class="form-container" id="formContainer">
+
+      <!--  Login Form -->
+      <div class="form login-form">
+        <h2>Recipes Finder</h2>
+        <h3>Login</h3>
+        <input type="email" placeholder="Email" id="loginEmail" required />
+        <input type="password" placeholder="Password" id="loginPassword" required />
+        <a href="#" class="forgot">Forgot password?</a>
+        <button id="loginSubmit">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign up</a></p>
+      </div>
+
+      <!--  Signup Form -->
+      <div class="form signup-form">
+        <h2>Recipes Finder</h2>
+        <h3>Sign Up</h3>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <button>Create Account</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--  Success Popup -->
+<div class="success-popup" id="successPopup">
+  <div class="success-box">
+    <h3>Login Successful!</h3>
+  </div>
+</div>
+
+
+<!-- Footer -->
+  <!-- <footer class="bg-dark text-white text-center py-3 mt-5 rounded-3">
+    <p>&copy; 2025 FoodieRover. All rights reserved.</p>
+  </footer> -->
+
+    <div class="body-footer">
+  <footer>
+<div class="footer-container">
+<div class="footer-col">
+<h3>About Us</h3>
+<p>Recipe Finder is your cooking partner. Discover delicious recipes, tips, and cooking hacks that make your meals more enjoyable!</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Follow Us</h3>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+© 2025 Recipe Finder | All Rights Reserved
+</div>
+</footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

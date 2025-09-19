@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Recipe Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+
+  <style>
+    /* Background with image */
+    body {
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+    html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* bilal css */
+
+body{
+
+background-color: #aaa1a18f;  
+  margin: 18px;  
+}
+
+    .navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 10px;
+    background-color: #8b6a2c;
+    
+    }
+
+    .nav-bttn a{
+      padding-left: 70px;
+      font-size: 18px;
+        font-style: bold;
+     
+    }
+
+    .navv .btn{
+      margin-right: -50px;
+      margin-top: -1px;
+    }
+
+        .navbar-brand {
+      font-size: 30px;
+      color: var(--text) !important;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: bold;}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+}
+.contact-form-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.nav-link{
+      transition: all .5s;
+    }
+    .nav-link:hover{
+      transform: translateY(-5px);
+    }
+
+     body.dark-mode {
+      background-color: #121212 !important;
+      background-blend-mode: multiply;
+    }
+
+    .contact-form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 100px auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+     .dark-mode .contact-form-container {
+      background-color: rgba(30, 30, 30, 0.95);
+      color: #e0e0e0;
+    }
+
+    .dark-mode input,
+    .dark-mode textarea {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      border: 1px solid #444;
+    }
+
+    .dark-mode .form-label {
+      color: white;
+    }
+
+    .dark-mode .btn-primary {
+      background-color: white;
+      border: none;
+      color: #000;
+    }
+
+    .dark-mode .btn-primary:hover {
+      background-color: rgb(132, 31, 31);
+    }
+
+    .dark-mode .nav-link {
+      color: #121212 !important;
+    }
+
+    .dark-mode .nav-link:hover {
+      color: rgb(156, 39, 39) !important;
+    }
+
+
+    .navbar .lo-btn {
+      background: rgb(156, 39, 39);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    .navbar .lo-btn:hover{
+      background-color: rgb(132, 31, 31);
+    }
+    
+    /* Overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    
+    /* Popup content */
+    .popup-content {
+      width: 350px;
+      height: 500px;
+      background: #fff;
+      border-radius: 12px;
+      perspective: 1000px;
+      padding: 0;
+    }
+    
+    .form-container {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    
+    .popup-overlay.signup-mode .form-container {
+      transform: rotateY(180deg);
+    }
+    
+    /* Forms */
+    .form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fdfdfd;
+      backface-visibility: hidden;
+      border-radius: 12px;
+    }
+    
+    .signup-form {
+      transform: rotateY(180deg);
+    }
+    
+    input {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    
+    .lo-btn {
+      padding: 12px;
+      background-color: rgb(156, 39, 39);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    .lo-btn:hover {
+      background-color: rgb(132, 31, 31);
+    }
+    
+    h2, h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    h2{
+      color: rgb(132, 31, 31);
+    }
+    
+
+    a {
+      color: rgb(156, 39, 39);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .forgot {
+      text-align: right;
+      font-size: 12px;
+      color: #888;
+    }
+    
+    /* Success Popup */
+    .success-popup {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .success-box {
+      background: white;
+      padding: 25px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .success-box h3 {
+      color: green;
+      text-align: center;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 px-3 py-2"> -->
+  <!-- <div class="container d-flex justify-content-between align-items-center"> -->
+    
+    <!-- Mobile Menu Button -->
+    <!-- <button class="d-lg-none btn border-0" id="menuToggle">☰</button> -->
+    
+    <!-- Logo (center on mobile) -->
+    <!-- <a class="navbar-brand fw-bold mx-auto mx-lg-0" href="index.html">🍽️ Foodie Rover</a> -->
+    
+    <!-- Nav Links (hidden on mobile, visible on desktop) -->
+    <!-- <div class="d-none d-lg-flex gap-3 align-items-center mx-auto" id="navLinks">
+      <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
+      <a href="reviews.html" class="nav-link fw-semibold text-dark">Ratings & Reviews</a>
+      <a href="contact.html" class="nav-link fw-semibold text-dark">Contact</a>
+    </div> -->
+    
+    <!-- Login Button -->
+    <!-- <button id="openLoginPopup" class="btn btn-danger">Login</button>
+  </div>
+</nav> -->
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="d-lg-none bg-white shadow-sm position-absolute top-0 start-0 w-100 vh-100 d-none">
+  <div class="p-4">
+    <button class="btn-close float-end mb-4" id="closeMenu"></button>
+    <a href="index.html" class="d-block mb-3 fw-semibold text-dark">Home</a>
+    <a href="reviews.html" class="d-block mb-3 fw-semibold text-dark">Ratings & Reviews</a>
+    <a href="contact.html" class="d-block mb-3 fw-semibold text-dark">Contact</a>
+  </div>
+</div>
+
+<!-- bilal navv -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 px-3 py-2">
+  <div class="container d-flex justify-content-between align-items-center navv">
+    
+    <!-- Mobile Menu Button -->
+    <button class="d-lg-none btn border-0" id="menuToggle">☰</button>
+    <!-- Logo (center on mobile) -->
+    <a class="navbar-brand fw-bold mx-auto mx-lg-0 display-5 navv-food" href="index.html"> FOODIE ROVER</a>
+    
+    <!-- Nav Links (hidden on mobile, visible on desktop) -->
+    <div class="d-none d-lg-flex gap-3 align-items-center mx-auto nav-bttn" id="navLinks">
+      <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
+      <a href="reviews.html" class="nav-link fw-semibold text-dark">Ratings & Reviews</a>
+      <a href="contact.html" class="nav-link fw-semibold text-dark">Contact</a>
+    </div>
+    
+    <!-- Login Button -->
+    <button id="openLoginPopup" class="btn btn-danger">Login</button>
+  </div>
+</nav>
+
+ <!-- Nav Icons  🏠📝📬 -->
+<!-- Contact Form -->
+<main>
+<div class="contact-form-container shadow-lg">
+  <h2 class="text-center mb-5 display-6 fw-semibold"> Contact Us</h2>
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Your Message</label>
+      <textarea class="form-control" id="message" rows="5" placeholder="Write your message here..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+  </form>
+</div>
+</main>
+
+
+  <!--  Popup Overlay -->
+  <div class="popup-overlay" id="loginPopupOverlay">
+    <div class="popup-content">
+      <div class="form-container" id="formContainer">
+  
+        <!--  Login Form -->
+        <div class="form login-form">
+          <h2>Recipes Finder</h2>
+          <h3>Login</h3>
+          <input type="email" placeholder="Email" id="loginEmail" required />
+          <input type="password" placeholder="Password" id="loginPassword" required />
+          <a href="#" class="forgot">Forgot password?</a>
+          <button id="loginSubmit" class="lo-btn">Login</button>
+          <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign up</a></p>
+        </div>
+  
+        <!--  Signup Form -->
+        <div class="form signup-form">
+          <h2>Recipes Finder</h2>
+          <h3>Sign Up</h3>
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button class="lo-btn">Create Account</button>
+          <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  <!--  Success Popup -->
+  <div class="success-popup" id="successPopup">
+    <div class="success-box">
+      <h3>Login Successful!</h3>
+    </div>
+  </div>
+
+<!-- Footer -->
+<!-- <footer class="bg-dark text-white text-center py-3 mt-5 rounded-3">
+  <p>&copy; 2025 FoodieRover. All rights reserved.</p>
+</footer> -->
+
+    <div class="body-footer">
+  <footer>
+<div class="footer-container">
+<div class="footer-col">
+<h3>About Us</h3>
+<p>Recipe Finder is your cooking partner. Discover delicious recipes, tips, and cooking hacks that make your meals more enjoyable!</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Recipes</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Follow Us</h3>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+© 2025 Recipe Finder | All Rights Reserved
+</div>
+</footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Dark Mode Toggle
+  // document.getElementById('modeToggle').addEventListener('click', function () {
+  //   document.body.classList.toggle('dark-mode');
+  //   const isDark = document.body.classList.contains('dark-mode');
+  //   this.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+  // });
+
+
+      
+    // Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+  document.getElementById("mobileMenu").classList.remove("d-none");
+});
+document.getElementById("closeMenu").addEventListener("click", function() {
+  document.getElementById("mobileMenu").classList.add("d-none");
+});
+
+    // Demo login credentials
+const savedEmail = "test@example.com";
+const savedPassword = "12345678";
+
+// Toggle to Signup
+function showSignUp() {
+  document.getElementById("loginPopupOverlay").classList.add("signup-mode");
+}
+
+// Toggle to Login
+function showLogin() {
+  document.getElementById("loginPopupOverlay").classList.remove("signup-mode");
+}
+
+// On load
+document.addEventListener("DOMContentLoaded", () => {
+  const loginPopup = document.getElementById("loginPopupOverlay");
+  const openBtn = document.getElementById("openLoginPopup");
+  const loginBtn = document.getElementById("loginSubmit");
+
+  // Show popup
+  openBtn.addEventListener("click", () => {
+    loginPopup.style.display = "flex";
+  });
+
+  // Close on background click
+  loginPopup.addEventListener("click", (e) => {
+    if (e.target.id === "loginPopupOverlay") {
+      loginPopup.style.display = "none";
+    }
+  });
+
+  // Login form logic
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (email === savedEmail && password === savedPassword) {
+      showSuccessPopup();
+    } else {
+      alert("Invalid email or password!");
+    }
+  });
+});
+
+//  Show Success Popup
+function showSuccessPopup() {
+  const successPopup = document.getElementById("successPopup");
+  const overlay = document.getElementById("loginPopupOverlay");
+
+  successPopup.style.display = "block";
+  setTimeout(() => {
+    successPopup.style.display = "none";
+    overlay.style.display = "none";
+  }, 2000);
+}
+</script>
+
+</body>
+</html>

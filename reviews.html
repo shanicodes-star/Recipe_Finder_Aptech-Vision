@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Reviews & Poll</title>
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <style>
+     body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  } 
+ 
+body.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode #homeLink,
+body.dark-mode .nav-link,
+body.dark-mode .btn-outline-dark {
+  color: #e0e0e0 !important;
+}
+
+.card-body img{
+    border-radius: 50%;
+    width: 45px;
+}
+
+body.dark-mode .btn-outline-dark {
+  border-color: #ffc107;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+  color: #000;
+}
+
+/* bilal css */
+
+body{
+
+  background-color: #dbd2d28f; 
+  margin: 18px;  
+}
+
+    .navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 10px;
+    background-color: #8b6a2c;
+    
+    }
+
+    .nav-bttn a{
+      padding-left: 60px;
+      font-size: 18px;
+        font-style: bold;
+     
+    }
+
+    .navv .btn{
+      margin-right: -50px;
+      margin-top: -1px;
+    }
+
+        .navbar-brand {
+      font-size: 30px;
+      color: var(--text) !important;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: bold;
+    }
+.nav-link{
+      transition: all .5s;
+    }
+    .nav-link:hover{
+      transform: translateY(-5px);
+    }
+
+    
+  .dark-mode .card {
+    background-color: #1e1e1e;
+    border-color: #333;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .card-title {
+    color: #ffc107;
+  }
+
+  .dark-mode .card-text {
+    color: #ddd;
+  }
+
+  .dark-mode .text-muted {
+    color: #aaa !important;
+  }
+
+  .dark-mode select,
+  .dark-mode input,
+  .dark-mode button {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+
+  .dark-mode .btn-outline-primary {
+    border-color: #ffc107;
+    color: #ffc107;
+  }
+
+  .dark-mode .btn-outline-primary:hover {
+    background-color: #ffc107;
+    color: #000;
+  } 
+
+
+
+  
+  .navbar .lo-btn {
+      background: rgb(156, 39, 39);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    .navbar .lo-btn:hover{
+      background-color: rgb(132, 31, 31);
+    }
+    
+    /* Overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    
+    /* Popup content */
+    .popup-content {
+      width: 350px;
+      height: 500px;
+      background: #fff;
+      border-radius: 12px;
+      perspective: 1000px;
+      padding: 0;
+    }
+    
+    .form-container {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    
+    .popup-overlay.signup-mode .form-container {
+      transform: rotateY(180deg);
+    }
+    
+    /* Forms */
+    .form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fdfdfd;
+      backface-visibility: hidden;
+      border-radius: 12px;
+    }
+    
+    .signup-form {
+      transform: rotateY(180deg);
+    }
+    
+    input {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    
+    .lo-btn {
+      padding: 12px;
+      background-color: rgb(156, 39, 39);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    .lo-btn:hover {
+      background-color: rgb(132, 31, 31);
+    }
+    
+    h2, h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    h2{
+      color: rgb(132, 31, 31);
+    }
+    
+
+    a {
+      color: rgb(156, 39, 39);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .forgot {
+      text-align: right;
+      font-size: 12px;
+      color: #888;
+    }
+    
+    /* Success Popup */
+    .success-popup {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1000;
+    }
+    
+    .success-box {
+      background: white;
+      padding: 25px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .success-box h3 {
+      color: green;
+      text-align: center;
+      margin: 0;
+    }
+
+
+    @media (max-width: 991px) {
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+    </style>
+  <!-- Nav Icons  🏠📝📬 -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 px-3 py-2">
+  <div class="container d-flex justify-content-between align-items-center navv">
+    
+    <!-- Mobile Menu Button -->
+    <button class="d-lg-none btn border-0" id="menuToggle">☰</button>
+    <!-- Logo (center on mobile) -->
+    <a class="navbar-brand fw-bold mx-auto mx-lg-0 navv-food" href="index.html"> FOODIE ROVER</a>
+    
+    <!-- Nav Links (hidden on mobile, visible on desktop) -->
+    <div class="d-none d-lg-flex gap-3 align-items-center mx-auto nav-bttn" id="navLinks">
+      <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
+      <a href="reviews.html" class="nav-link fw-semibold text-dark">Ratings & Reviews</a>
+      <a href="contact.html" class="nav-link fw-semibold text-dark">Contact</a>
+    </div>
+    
+    <!-- Login Button -->
+    <button id="openLoginPopup" class="btn btn-danger">Login</button>
+  </div>
+</nav>
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="d-lg-none bg-white shadow-sm position-absolute top-0 start-0 w-100 vh-100 d-none">
+  <div class="p-4">
+    <button class="btn-close float-end mb-4" id="closeMenu"></button>
+    <a href="index.html" class="d-block mb-3  text-dark">Home</a>
+    <a href="reviews.html" class="d-block mb-3 fw-semibold text-dark">Ratings & Reviews</a>
+    <a href="contact.html" class="d-block mb-3 fw-semibold text-dark">Contact</a>
+  </div>
+</div>
+ 
+   <!-- Nav Icons  🏠📝📬 -->
+  <!-- Reviews Section -->
+  <section class="container my-5">
+    <h2 class="text-center mb-5 display-6 fw-semibold">What People Are Saying</h2>
+    <div class="row" id="allReviews">
+      <!-- Multiple static review cards -->
+      <div class="col-md-4 mb-4" >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"This website helped me cook for my family during Ramadan. Amazing!"</p>
+            <img src="https://randomuser.me/api/portraits/women/41.jpg"
+            <p class="text-muted">- Fatima from Lahore</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"Excellent recipes! My kids loved the chicken curry!"</p>
+            <img src="https://randomuser.me/api/portraits/women/42.jpg"
+            <p class="text-muted">- Ayesha from Karachi</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"Simple layout, great results. Loved the Biryani recipe."</p>
+            <img src="https://randomuser.me/api/portraits/men/50.jpg"
+            <p class="text-muted">- Raza from Lahore</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟</h5>
+            <p class="card-text">"Good variety but would love more vegetarian dishes."</p>
+            <img src="https://randomuser.me/api/portraits/women/43.jpg"
+            <p class="text-muted">- Saima from Islamabad</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"I made Kofta for the first time — it turned out amazing!"</p>
+            <img src="https://randomuser.me/api/portraits/men/51.jpg"
+            <p class="text-muted">- Bilal from Multan</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"Nice instructions and clean design. Good job!"</p>
+            <img src="https://randomuser.me/api/portraits/women/44.jpg"
+            <p class="text-muted">- Nadia from Peshawar</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"My mom and I follow your recipes weekly. Love it!"</p>
+            <img src="https://randomuser.me/api/portraits/women/45.jpg"
+            <p class="text-muted">- Zara from Hyderabad</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"Appreciate the Urdu switch — very thoughtful!"</p>
+            <img src="https://randomuser.me/api/portraits/men/52.jpg"
+            <p class="text-muted">- Sameer from Rawalpindi</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟</h5>
+            <p class="card-text">"Too many non-local recipes. Need more Pakistani ones."</p>
+            <img src="https://randomuser.me/api/portraits/women/46.jpg"
+            <p class="text-muted">- Hira from Faisalabad</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"The step-by-step visuals helped a lot. Keep it up!"</p>
+            <img src="https://randomuser.me/api/portraits/men/53.jpg"
+            <p class="text-muted">- Imran from Gujranwala</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"I bookmarked this site! Finally something local and useful."</p>
+            <img src="https://randomuser.me/api/portraits/women/47.jpg"
+            <p class="text-muted">- Anam from Bahawalpur</p>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"Discovered it through a friend — best find of the year!"</p>
+            <img src="https://randomuser.me/api/portraits/men/54.jpg"
+            <p class="text-muted">- Usman from Sialkot</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟</h5>
+            <p class="card-text">"Nice content but please reduce ads."</p>
+            <img src="https://randomuser.me/api/portraits/women/48.jpg"
+            <p class="text-muted">- Kiran from Sukkur</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"Even my husband is learning to cook now 😂"</p>
+            <img src="https://randomuser.me/api/portraits/women/49.jpg"
+            <p class="text-muted">- Rabia from Quetta</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟</h5>
+            <p class="card-text">"Great base, needs more desserts section."</p>
+            <img src="https://randomuser.me/api/portraits/men/55.jpg"
+            <p class="text-muted">- Danish from Mirpur</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"Hands down the best recipe platform in Urdu!"</p>
+            <img src="https://randomuser.me/api/portraits/women/39.jpg"
+            <p class="text-muted">- Aleena from Abbottabad</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"Mobile version is very responsive. Well done!"</p>
+            <img src="https://randomuser.me/api/portraits/men/56.jpg"
+            <p class="text-muted">- Faisal from Sargodha</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟</h5>
+            <p class="card-text">"It’s good, just fix the Urdu alignment."</p>
+            <img src="https://randomuser.me/api/portraits/women/40.jpg"
+            <p class="text-muted">- Mariam from Sheikhupura</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"The AI suggestion is a great feature. Please expand!"</p>
+            <img src="https://randomuser.me/api/portraits/men/57.jpg"
+            <p class="text-muted">- Jibran from Larkana</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟</h5>
+            <p class="card-text">"Even better than some YouTube channels!"</p>
+            <img src="https://randomuser.me/api/portraits/women/50.jpg"
+            <p class="text-muted">- Sana from Mardan</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">🌟🌟🌟🌟🌟</h5>
+            <p class="card-text">"Thank you for creating something truly Pakistani."</p>
+            <img src="https://randomuser.me/api/portraits/men/58.jpg"
+            <p class="text-muted">- Yasir from Gilgit</p>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </section>
+
+  <!--  Total Likes & Dislikes -->
+  <section class="container my-5 text-center">
+    <h4>📊 Overall Reactions</h4>
+    <div class="d-flex justify-content-center gap-5 mt-3">
+      <div>
+        <h5>👍 Likes</h5>
+        <p id="totalLikes" class="display-6 text-success">128</p>
+      </div>
+      <div>
+        <h5>👎 Dislikes</h5>
+        <p id="totalDislikes" class="display-6 text-danger">12</p>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+
+
+  <!--  Popup Overlay -->
+<div class="popup-overlay" id="loginPopupOverlay">
+  <div class="popup-content">
+    <div class="form-container" id="formContainer">
+
+      <!--  Login Form -->
+      <div class="form login-form">
+        <h2>Recipes Finder</h2>
+        <h3>Login</h3>
+        <input type="email" placeholder="Email" id="loginEmail" required />
+        <input type="password" placeholder="Password" id="loginPassword" required />
+        <a href="#" class="forgot">Forgot password?</a>
+        <button id="loginSubmit" class="lo-btn">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign up</a></p>
+      </div>
+
+      <!--  Signup Form -->
+      <div class="form signup-form">
+        <h2>Recipes Finder</h2>
+        <h3>Sign Up</h3>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <button class="lo-btn">Create Account</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--  Success Popup -->
+<div class="success-popup" id="successPopup">
+  <div class="success-box">
+    <h3>Login Successful!</h3>
+  </div>
+</div>
+
+  <!--  Footer -->
+  <!-- <footer class="bg-dark text-white text-center py-3 mt-5 rounded-3">
+    <p>&copy; 2025 FoodieRover. All rights reserved.</p>
+  </footer> -->
+
+
+      <div class="body-footer">
+  <footer>
+<div class="footer-container">
+<div class="footer-col">
+<h3>About Us</h3>
+<p>Recipe Finder is your cooking partner. Discover delicious recipes, tips, and cooking hacks that make your meals more enjoyable!</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Recipes</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Follow Us</h3>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+© 2025 Recipe Finder | All Rights Reserved
+</div>
+</footer>
+</div>
+
+  <!--  Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+
+    // Demo login credentials
+const savedEmail = "test@example.com";
+const savedPassword = "12345678";
+
+// Toggle to Signup
+function showSignUp() {
+  document.getElementById("loginPopupOverlay").classList.add("signup-mode");
+}
+
+// Toggle to Login
+function showLogin() {
+  document.getElementById("loginPopupOverlay").classList.remove("signup-mode");
+}
+
+// On load
+document.addEventListener("DOMContentLoaded", () => {
+  const loginPopup = document.getElementById("loginPopupOverlay");
+  const openBtn = document.getElementById("openLoginPopup");
+  const loginBtn = document.getElementById("loginSubmit");
+
+  // Show popup
+  openBtn.addEventListener("click", () => {
+    loginPopup.style.display = "flex";
+  });
+
+  // Close on background click
+  loginPopup.addEventListener("click", (e) => {
+    if (e.target.id === "loginPopupOverlay") {
+      loginPopup.style.display = "none";
+    }
+  });
+
+  // Login form logic
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (email === savedEmail && password === savedPassword) {
+      showSuccessPopup();
+    } else {
+      alert("Invalid email or password!");
+    }
+  });
+});
+
+//  Show Success Popup
+function showSuccessPopup() {
+  const successPopup = document.getElementById("successPopup");
+  const overlay = document.getElementById("loginPopupOverlay");
+
+  successPopup.style.display = "block";
+  setTimeout(() => {
+    successPopup.style.display = "none";
+    overlay.style.display = "none";
+  }, 2000);
+}
+    
+    // Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+  document.getElementById("mobileMenu").classList.remove("d-none");
+});
+document.getElementById("closeMenu").addEventListener("click", function() {
+  document.getElementById("mobileMenu").classList.add("d-none");
+});
+
+
+    // // Dark mode toggle
+    // document.getElementById('modeToggle').addEventListener('click', function () {
+    //   document.body.classList.toggle('dark-mode');
+    //   const isDark = document.body.classList.contains('dark-mode');
+    //   this.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    // });
+  </script>
+  
+  </script>
+</body>
+</html>
